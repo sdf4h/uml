@@ -1,0 +1,24 @@
+@startuml
+actor Reader as "Читатель"
+actor Librarian as "Библиотекарь"
+actor NotificationSystem as "Система Уведомлений"
+
+usecase SearchBooks as "Поиск книг"
+usecase ReserveBooks as "Запись на книги"
+usecase ReturnBooks as "Возврат книг"
+usecase ExtendRental as "Продление аренды"
+usecase ManageInventory as "Управление запасами книг"
+usecase AddNewBooks as "Добавление новых книг" 
+usecase SendNotifications as "Отправка уведомлений"
+
+Reader --> SearchBooks
+Reader --> ReserveBooks
+Reader --> ReturnBooks
+Reader --> ExtendRental
+
+Librarian --> ManageInventory
+Librarian --> AddNewBooks
+
+NotificationSystem --> SendNotifications
+
+@enduml

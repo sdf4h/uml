@@ -1,0 +1,20 @@
+@startuml
+actor Customer as "Покупатель"
+actor System as "Система"
+actor DeliveryService as "Служба Доставки"
+
+usecase SelectProduct as "Выбор товара"
+usecase AddToCart as "Добавление в корзину"
+usecase Checkout as "Оформление заказа"
+usecase MakePayment as "Оплата"
+usecase ArrangeDelivery as "Доставка"
+
+Customer -->> SelectProduct
+Customer -->> AddToCart
+Customer -->> Checkout
+Customer -->> MakePayment
+Customer -->> ArrangeDelivery
+
+System -->> ArrangeDelivery
+DeliveryService -->> ArrangeDelivery
+@enduml
