@@ -1,0 +1,29 @@
+@startuml
+class Client {
+    - client_id: String
+    - name: String
+    - address: String
+    + open_account(account_type: String): Account
+}
+
+class Account {
+    - account_number: String
+    - balance: float
+    - account_type: String
+    + get_balance(): float
+}
+
+class CheckingAccount {
+    - overdraft_limit: float
+    + withdraw(amount: float): void
+}
+
+class SavingsAccount {
+    - interest_rate: float
+    + withdraw(amount: float): void
+}
+
+Client "1" -- "0..*" Account
+Account <|-- CheckingAccount
+Account <|-- SavingsAccount
+@enduml

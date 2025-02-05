@@ -1,0 +1,24 @@
+@startuml
+class Product {
+    - product_id : String
+    - name : String
+    - price : float
+    + check_availability() : boolean
+}
+
+class Cart {
+    - cart_id : String
+    - items : List<Product>
+    + add_item(product: Product) : void
+}
+
+class Order {
+    - order_id : String
+    - cart : Cart
+    - total_price : float
+    + place_order() : void
+}
+
+Cart "1" -- "0..*" Product
+Order "1" -- "1" Cart
+@enduml

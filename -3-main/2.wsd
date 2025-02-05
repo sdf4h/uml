@@ -1,0 +1,24 @@
+@startuml
+class Book {
+    - book_id: String
+    - title: String
+    - author: String
+    + checkout(): void
+}
+
+class Member {
+    - member_id: String
+    - name: String
+    - membership_type: String
+    + borrow_book(book: Book): void
+}
+
+class Membership {
+    - membership_type: String
+    - max_borrow_limit: int
+    + get_borrow_limit(): int
+}
+
+Member "1" -- "0..*" Book
+Member "1" -- "1" Membership
+@enduml

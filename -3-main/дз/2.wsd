@@ -1,0 +1,17 @@
+@startuml
+class Course {
+    - course_id : String
+    - title : String
+    - max_participants : int
+    + enroll_student(student: Student) : void
+}
+
+class Student {
+    - student_id : String
+    - name : String
+    - courses_enrolled : List<Course>
+    + register_course(course: Course) : void
+}
+
+Student "0..*" -- "0..*" Course
+@enduml
