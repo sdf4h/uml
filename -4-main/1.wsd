@@ -1,0 +1,73 @@
+@startuml
+class Person {
+    - name: String
+    - contact_info: String
+}
+
+class Reader {
+    - reader_id: String
+    - borrowed_books: List<Book>
+    + borrowBook(book: Book): void
+    + returnBook(book: Book): void
+}
+
+class Employee {
+    - employee_id: String
+    - role: String
+    + getRole(): String
+}
+
+class Librarian {
+    + recordCheckout(reader: Reader, book: Book): void
+    + recordReturn(reader: Reader, book: Book): void
+}
+
+class Administrator {
+    + addBook(book: Book): void
+    + addReader(reader: Reader): void
+    + addEmployee(employee: Employee): void
+}
+
+class Book {
+    - book_id: String
+    - title: String
+    - authors: List<Author>
+    - genre: Genre
+    - publication_year: int
+    - status: String
+    + getStatus(): String
+    + setStatus(status: String): void
+}
+
+class Author {
+    - author_id: String
+    - name: String
+    - books: List<Book>
+    + getBooks(): List<Book>
+}
+
+class Genre {
+    - genre_id: String
+    - name: String
+    - parent_genre: Genre
+    + getParentGenre(): Genre
+}
+
+class Library {
+    - books: List<Book>
+    - readers: List<Reader>
+    - employees: List<Employee>
+    + getAvailableBooks(): List<Book>
+    + notifyReaders(): void
+}
+
+Person <|-- Reader
+Person <|-- Employee
+Employee <|-- Librarian
+Employee <|-- Administrator
+Book "1..*" --> "1..*" Author
+Book "1" --> "1" Genre
+Library "1" --> "*" Book
+Library "1" --> "*" Reader
+Library "1" --> "*" Employee
+@enduml
